@@ -46,8 +46,6 @@ class TodoListViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        items[indexPath.row].done = !items[indexPath.row].done
-        
         context.delete(items[indexPath.row])
         items.remove(at: indexPath.row)
         
@@ -130,8 +128,6 @@ extension TodoListViewController: UISearchBarDelegate {
         let request: NSFetchRequest<Item> = Item.fetchRequest()
         
         let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        
-        request.predicate = predicate
         
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 
